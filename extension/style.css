@@ -5,7 +5,9 @@
 }
 
 body{
-    background-color:lightskyblue;
+    position: relative;
+    background-color: lightskyblue;
+    
 }
 h2{
     text-align: center;
@@ -16,47 +18,51 @@ h2{
     max-width: 800px;
     height: max-content;
     border: 1px solid black;
-    margin-top: 8rem;
-    margin-left: 20rem;
+    margin-top: 6rem;
+    margin-left: 25rem;
     padding: 15px;
     box-shadow:  inset 0 -3em 3em rgba(128, 211, 128, 0.3),
     0 0 0 2px white,
     0.3em 0.3em 1em rgba(207, 120, 120, 0.6);
-    position: relative;
+    position: absolute;
+    overflow:scroll;
+}
+.container::-webkit-scrollbar{
+    outline: none;
 }
 .container h1{
-    text-align: start;
+    text-align: center;
     color: black;
     margin-top: 45px;
     font-weight: 700;
 }
 
-.button{
-    width: 175px;
-    height: 30px;
-    background-color:lightsalmon;
+button{
+    width: 145px;
+    height:40px;
+    background-color:rgb(226, 205, 196);
     border: 1px solid black;
     display: block;
     padding: 5px;
+    font-size: medium;
     margin-top: 2rem;
-    margin-left:10rem;
-    box-shadow:inset 0 -3em 3em rgba(128, 211, 128, 0.3),
-    0 0 0 2px white,
-    0.3em 0.3em 1em rgba(207, 120, 120, 0.6);
+    margin-left:14rem;
+    box-shadow:inset 0 -3em 3em rgba(159, 195, 159, 0.3),
+    0 0 0 2px rgb(156, 144, 144),
+    0.3em 0.3em 1em rgba(139, 128, 128, 0.6);
     cursor: pointer;
     border-radius: 8px;
 }
-.button[disabled] {
-    background-color: rgb(118, 116, 116);
-    color: white;
+button[disabled] {
+    background-color: rgb(225, 113, 44);
+    color: rgb(31, 29, 29);
     border-radius: 8px;
     width: max-content;
     height: max-content;
-    padding: 10px;
     font-size: large;
-    margin: auto;
+    margin-top: 8px;
     display: block;
-    border-color: lightpink;
+    border-color: rgb(199, 143, 151);
 }
 #output{
     padding: 10px;
