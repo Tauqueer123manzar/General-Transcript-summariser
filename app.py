@@ -2,28 +2,15 @@ from flask import Flask, request
 from youtube_transcript_api import YouTubeTranscriptApi
 from transformers import pipeline
 
-app = Flask(__name__)
+# Get YouTube video transcript
+video_id = 'https://youtu.be/gsIdFo6Tlro'
+transcript = YouTubeTranscriptApi.get_transcript(video_id)
 
-@app.get('/summary')
-def summary_api():
-    url = request.args.get('url', '')
-    video_id = url.split('=')[1]
-    summary = get_summary(get_transcript(video_id))
-    return summary, 200
+# Initialize text generation pipeline
+text_generation_pipeline = pipeline('text-generation')
 
-def get_transcript(video_id):
-    transcript_list = YouTubeTranscriptApi.get_transcript(video_id)
-    transcript = ' '.join([d['text'] for d in transcript_list])
-    return transcript
+# Process transcript with the pipeline
+generated_text = text_generation_pipeline(transcript)
 
-def get_summary(transcript):
-    summariser = pipeline('summarization')
-    summary = ''
-    for i in range(0, (len(transcript)//1000)+1):
-        summary_text = summariser(transcript[i*1000:(i+1)*1000])[0]['summary_text']
-        summary = summary + summary_text + ' '
-    return summary
-    
-
-if __name__ == '__main__':
-    app.run()
+# Print or save the generated text
+print(generated_text)
